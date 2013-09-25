@@ -1,0 +1,4 @@
+phpwhois
+========
+
+PHP whois library

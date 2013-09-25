@@ -1,9 +1,9 @@
 {
-    "name": "peterkokot/phpwhois"
+    "name": "maastermedia/phpwhois"
     "type": "library",
     "description": "Whois for PHP",
     "keywords": ["whois"],
-    "homepage": "http://github.com/peterkokot/phpwhois",
+    "homepage": "http://github.com/maastermedia/phpwhois",
     "license": "MIT",
     "authors": [
         {

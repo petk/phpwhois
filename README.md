@@ -1,6 +1,14 @@
 # PHPwhois
 
-PHP whois library
+**Warning**: This library is in development phase and is not stable for real usage yet.
+
+PHP whois library inspired by PHPWhois.org library, updated for more recent version of PHP and with more domains lookups.
+
+## Installation
+
+```
+php composer.phar require maastermedia/phpwhois
+```
 
 ## License
 

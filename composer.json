@@ -14,10 +14,11 @@
     "require": {
         "php": ">=5.3.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7.0"
+    }
     "autoload": {
-        "psr-0" : {
-            "Phpwhois" : "src/"
-        }
+        "psr-0" : {"PhpWhois" : "src/"}
     },
     "minimum-stability": "dev",
     "extra": {

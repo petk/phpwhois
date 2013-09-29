@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the PHPWhois
+ * This file is part of the PHPWhois package.
  *
  * (c) Peter Kokot <peterkokot@gmail.com>
  * 
@@ -9,16 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace PHPWhois;
+namespace PhpWhois;
 
 /**
  * Whois
  * @author Peter Kokot <peterkokot@gmail.com>
  */
-class PHPWhois
+class Whois
 {
     const VERSION = "1.0-dev";
-
+    
+    /**
+     * constructor
+     */
     public function __construct() {
 
     }

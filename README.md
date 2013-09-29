@@ -8,9 +8,23 @@ PHP whois library inspired by PHPWhois.org library, updated for more recent vers
 
 ## Installation
 
-```
+```bash
 php composer.phar require maastermedia/phpwhois
 ```
+
+Basic usage:
+
+```php
+<?php
+// index.php
+require('vendor/autoload.php');
+
+$phpwhois = new PHPWhois();
+```
+
+## Documentation
+
+Documentation for using phpwhois can be found in [doc folder](doc).
 
 ## License
 

@@ -1,5 +1,5 @@
 {
-    "name": "maastermedia/phpwhois"
+    "name": "maastermedia/phpwhois",
     "type": "library",
     "description": "Whois for PHP",
     "keywords": ["whois"],

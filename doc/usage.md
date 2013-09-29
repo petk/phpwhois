@@ -1,6 +1,8 @@
-# Phpwhois usage
+# PhpWhois usage
 
 ```php
-$whois = new Phpwhois();
+use PhpWhois\Whois;
+
+$whois = new Whois();
 ```
 

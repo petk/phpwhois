@@ -15,7 +15,7 @@ namespace PHPWhois;
  * Whois
  * @author Peter Kokot <peterkokot@gmail.com>
  */
-class Whois
+class PHPWhois
 {
     const VERSION = "1.0-dev";
 

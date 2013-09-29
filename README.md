@@ -19,7 +19,7 @@ Basic usage:
 // index.php
 require('vendor/autoload.php');
 
-$phpwhois = new PHPWhois();
+$whois = new Phpwhois();
 ```
 
 ## Documentation

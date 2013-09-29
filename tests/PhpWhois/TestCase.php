@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of PHPWhois package.
+ * This file is part of the PhpWhois package.
  *
  * (c) Peter Kokot <peterkokot@gmail.com>
  *
@@ -9,5 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once dirname(__FILE__).'/..lib/PHPWhois/Autoloader.php';
+namespace PhpWhois;
 
+class TestCase extends \PHPUnit_Framework_TestCase
+{
+
+}

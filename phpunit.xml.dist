@@ -12,14 +12,14 @@
          bootstrap="test/bootstrap.php"
 >
   <testsuites>
-    <testsuite name="PHPWhois Test Suite">
-      <directory>./test/PHPWhois/</directory>
+    <testsuite name="PhpWhois Test Suite">
+      <directory>./tests/PhpWhois/</directory>
     </testsuite>
   </testsuites>
 
   <filter>
     <whitelist>
-      <directory suffix=".php">./lib/PHPWhois/</directory>
+      <directory suffix=".php">./src/PhpWhois/</directory>
     </whitelist>
   </filter>
 </phpunit>

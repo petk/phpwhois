@@ -1,4 +1,4 @@
-# Phpwhois
+# PhpWhois
 
 [![Build Status](https://secure.travis-ci.org/maastermedia/phpwhois.png?branch=master)](http://travis-ci.org/maastermedia/phpwhois)
 
@@ -6,11 +6,11 @@
 
 **Warning**: This library is in development phase and is not stable for real usage yet.
 
-Phpwhois library is inspired by PHPWhois.org library, but aims to be updated for more recent version of PHP and with more domain servers.
+PhpWhois library is inspired by PHPWhois.org library and others, but aims to be updated for more recent version of PHP and with more domain servers.
 
 ## Documentation
 
-Documentation for using Phpwhois can be found in [doc folder](doc).
+Documentation for using PhpWhois can be found in [doc folder](doc).
 
 ## License
 

@@ -3,6 +3,7 @@
 ```php
 use PhpWhois\Whois;
 
-$whois = new Whois();
+$whois = new Whois('yourdomain.tld');
+echo $whois->getData();
 ```
 

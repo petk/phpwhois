@@ -19,7 +19,7 @@ require('vendor/autoload.php');
 
 use PhpWhois\Whois;
 
-$whois = new Whois();
+$whois = new Whois('yourdomain.tld');
 ```
 
 or use Symfony2 ClassLoader component.

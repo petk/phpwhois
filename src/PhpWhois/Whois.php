@@ -67,6 +67,11 @@ class Whois
         return $domain;
     }
 
+    /**
+     * Gets data for the current domain.
+     * 
+     * @return string Content of whois lookup.
+     */
     public function getData()
     {
         if($this->ip) {
@@ -78,7 +83,11 @@ class Whois
     }
 
     /**
-     * Domain lookup
+     * Domain lookup.
+     *
+     * @param string @domain Domain name
+     *
+     * @return string Domain lookup results.
      */
     public function lookupDomain($domain)
     {
@@ -103,6 +112,13 @@ class Whois
         return "$domain domain lookup results from $server server:\n\n" . $result;
     }
 
+    /**
+     * IP lookup.
+     *
+     * @param string $ip
+     *
+     * @return string IP lookup results.
+     */
     public function lookupIp($ip)
     {
         $results = array();
@@ -121,6 +137,14 @@ class Whois
         return $res;
     }
 
+    /**
+     * Queries the whois server.
+     *
+     * @param string $server
+     * @param string $domain
+     *
+     * @return string Information returned from whois server.
+     */
     public function queryServer($server, $domain)
     {
         $port = 43;

@@ -12,6 +12,7 @@
 namespace PhpWhois;
 
 use PhpWhois\Server;
+use PhpWhois\Validator;
 
 /**
  * Whois
@@ -37,11 +38,12 @@ class Whois
     public function __construct($domain)
     {
         $this->domain = $this->clean($domain);
+        $validator = new Validator();
 
         // check if domain is ip
-        if($this->validateIp($this->domain)) {
+        if($validator->validateIp($this->domain)) {
             $this->ip = $this->domain;
-        } elseif($this->validateDomain($this->domain)) {
+        } elseif($validator->validateDomain($this->domain)) {
             $domainParts = explode(".", $this->domain);
             $this->tld = strtolower(array_pop($domainParts));
         } else {
@@ -117,28 +119,6 @@ class Whois
             $res .= "Lookup results for " . $ip . " from " . $server . " server: " . $result;
         }
         return $res;
-    }
-
-    public function validateIp($ip)
-    {
-        $ipnums = explode(".", $ip);
-        if(count($ipnums) != 4) {
-            return false;
-        }
-        foreach($ipnums as $ipnum) {
-            if(!is_numeric($ipnum) || ($ipnum > 255)) {
-                return false;
-            }
-        }
-        return $ip;
-    }
-
-    public function validateDomain($domain)
-    {
-        if(!preg_match("/^([-a-z0-9]{2,100})\.([a-z\.]{2,8})$/i", $domain)) {
-            return false;
-        }
-        return $domain;
     }
 
     public function queryServer($server, $domain)

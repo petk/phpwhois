@@ -101,7 +101,8 @@ class Whois
         return "$domain domain lookup results from $server server:\n\n" . $result;
     }
 
-    public function lookupIp($ip) {
+    public function lookupIp($ip)
+    {
         $results = array();
 
         $continentServer = new Server();
@@ -118,7 +119,8 @@ class Whois
         return $res;
     }
 
-    public function validateIp($ip) {
+    public function validateIp($ip)
+    {
         $ipnums = explode(".", $ip);
         if(count($ipnums) != 4) {
             return false;
@@ -131,14 +133,16 @@ class Whois
         return $ip;
     }
 
-    public function validateDomain($domain) {
+    public function validateDomain($domain)
+    {
         if(!preg_match("/^([-a-z0-9]{2,100})\.([a-z\.]{2,8})$/i", $domain)) {
             return false;
         }
         return $domain;
     }
 
-    public function queryServer($server, $domain) {
+    public function queryServer($server, $domain)
+    {
         $port = 43;
         $timeout = 10;
         $fp = @fsockopen($server, $port, $errno, $errstr, $timeout) or die("Socket Error " . $errno . " - " . $errstr);

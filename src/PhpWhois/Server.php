@@ -10,11 +10,18 @@
 
 namespace PhpWhois;
 
+/**
+ * Server class
+ *
+ * @author Peter Kokot <peterkokot@gmail.com>
+ */
 class Server
 {
     /**
      * Available country TLDs or Whois servers for domain lookups.
      * source http://www.iana.org/domains/root/db/ and http://www.whois365.com/en/listtld/
+     *
+     * @var array $servers Array of whois servers for domain lookup.
      */
     private $servers = array(
         "ac" => "whois.nic.ac", // Ascension Island
@@ -279,6 +286,9 @@ class Server
         "yu" => "whois.ripe.net"
     );
     
+    /**
+     * @var array $continentServers Array of servers for IP lookup.
+     */
     private $continentServers = array(
         //"whois.afrinic.net", // Africa - returns timeout error :-(
         "whois.lacnic.net", // Latin America and Caribbean - returns data for ALL locations worldwide :-)
@@ -288,11 +298,23 @@ class Server
     );
 
 
+    /**
+     * Gets a server name for domain lookup by domain tld.
+     *
+     * @param string $id
+     *
+     * @return string Server name for domain lookup.
+     */
     public function getServerByTld($id)
     {
         return $this->servers[$id];
     }
 
+    /**
+     * Gets an array of Continent servers for IP lookup.
+     *
+     * @return array Continent servers for IP lookup.
+     */
     public function getContinentServers()
     {
         return $this->continentServers;

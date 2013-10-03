@@ -8,6 +8,10 @@
 
 PhpWhois library is inspired by PHPWhois.org library and others, but aims to be updated for more recent version of PHP and with more domain servers.
 
+## Requirements
+
+PhpWhois library requires PHP 5.3.0 to work properly.
+
 ## Documentation
 
 Documentation for using PhpWhois can be found in [doc folder](doc).

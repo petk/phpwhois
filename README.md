@@ -10,7 +10,7 @@ PhpWhois library is inspired by PHPWhois.org library and others, but aims to be 
 
 ## Requirements
 
-PhpWhois library requires PHP 5.3.0 to work properly.
+PhpWhois library requires PHP 5.4.0.
 
 ## Documentation
 

@@ -68,11 +68,11 @@ class Whois
     }
 
     /**
-     * Gets data for the current domain.
+     * Looks up the current domain or IP.
      * 
      * @return string Content of whois lookup.
      */
-    public function getData()
+    public function lookup()
     {
         if($this->ip) {
             $result = $this->lookupIp($this->ip);

@@ -33,7 +33,7 @@ class Whois
     /**
      * Constructor.
      *
-     * @param $domain string Domain name
+     * @param string $domain Domain name
      */
     public function __construct($domain)
     {
@@ -54,7 +54,7 @@ class Whois
     /**
      * Cleans domain name of empty spaces, www and http.
      *
-     * @param $domain string Domain name
+     * @param string $domain Domain name
      *
      * @return string
      */
@@ -169,5 +169,19 @@ class Whois
             }
         }
         return $res;
+    }
+
+    /**
+     * Checks if domain is available or not.
+     *
+     * @return boolean
+     */
+    public function isAvailable()
+    {
+        if ( checkdnsrr($this->domain . '.', 'ANY') ) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

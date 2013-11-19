@@ -283,7 +283,7 @@ class Server
         "xxx" => "whois.nic.xxx",
         // ye - Yemen - no whois server assigned
         "yt" => "whois.nic.yt", // Mayotte
-        "yu" => "whois.ripe.net"
+        "yu" => "whois.ripe.net",
     );
     
     /**
@@ -294,20 +294,20 @@ class Server
         "whois.lacnic.net", // Latin America and Caribbean - returns data for ALL locations worldwide :-)
         "whois.apnic.net", // Asia/Pacific only
         "whois.arin.net", // North America only
-        "whois.ripe.net" // Europe, Middle East and Central Asia only
+        "whois.ripe.net", // Europe, Middle East and Central Asia only
     );
 
 
     /**
      * Gets a server name for domain lookup by domain tld.
      *
-     * @param string $id
+     * @param string $tld
      *
      * @return string Server name for domain lookup.
      */
-    public function getServerByTld($id)
+    public function getServerByTld($tld)
     {
-        return $this->servers[$id];
+        return $this->servers[$tld];
     }
 
     /**

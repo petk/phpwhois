@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of PhpWhois package.
+ * This file is part of the PhpWhois package.
  *
  * (c) Peter Kokot <peterkokot@gmail.com>
  *

@@ -22,7 +22,7 @@ class Validator
      */
     public function validateDomain($domain)
     {
-        if(!preg_match("/^([-a-z0-9]{2,100})\.([a-z\.]{2,8})$/i", $domain)) {
+        if (!preg_match("/^([-a-z0-9]{2,100})\.([a-z\.]{2,8})$/i", $domain)) {
             return false;
         }
         return $domain;
@@ -38,11 +38,11 @@ class Validator
     public function validateIp($ip)
     {
         $ipnums = explode(".", $ip);
-        if(count($ipnums) != 4) {
+        if (count($ipnums) != 4) {
             return false;
         }
         foreach($ipnums as $ipnum) {
-            if(!is_numeric($ipnum) || ($ipnum > 255)) {
+            if (!is_numeric($ipnum) || ($ipnum > 255)) {
                 return false;
             }
         }

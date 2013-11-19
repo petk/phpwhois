@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Whois for PHP",
     "keywords": ["whois"],
-    "homepage": "http://github.com/maastermedia/phpwhois",
+    "homepage": "https://github.com/maastermedia/phpwhois",
     "license": "MIT",
     "authors": [
         {

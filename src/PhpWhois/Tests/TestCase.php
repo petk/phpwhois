@@ -9,5 +9,9 @@
  * file that was distributed with this source code.
  */
 
-$loader = require __DIR__ . "/../vendor/autoload.php";
-$loader->add('PhpWhois\\', __DIR__);
+namespace PhpWhois\Tests;
+
+class TestCase extends \PHPUnit_Framework_TestCase
+{
+
+}

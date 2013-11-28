@@ -9,18 +9,21 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="tests/bootstrap.php"
+         bootstrap="./vendor/autoload.php"
 >
-  <testsuites>
-    <testsuite name="PhpWhois Test Suite">
-      <directory>./tests/PhpWhois/</directory>
-    </testsuite>
-  </testsuites>
+    <testsuites>
+        <testsuite name="PhpWhois Test Suite">
+            <directory>./src/PhpWhois/Tests</directory>
+        </testsuite>
+    </testsuites>
 
-  <filter>
-    <whitelist>
-      <directory suffix=".php">./src/PhpWhois/</directory>
-    </whitelist>
-  </filter>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src/PhpWhois</directory>
+            <exclude>
+                <directory>./src/PhpWhois/Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
 

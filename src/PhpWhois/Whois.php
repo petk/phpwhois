@@ -11,6 +11,8 @@
 
 namespace PhpWhois;
 
+use Exception;
+
 /**
  * Whois
  * @author Peter Kokot <peterkokot@gmail.com>

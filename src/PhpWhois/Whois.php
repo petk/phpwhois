@@ -91,11 +91,11 @@ class Whois
         $serverObj = new Server();
         $server = $serverObj->getServerByTld($this->tld);
         if (!$server) {
-            return "Error: No appropriate Whois server found for $domain domain!";
+            throw new Exception("Error: No appropriate Whois server found for $domain domain!");
         }
         $result = $this->queryServer($server, $domain);
         if (!$result) {
-            return "Error: No results retrieved from $server server for $domain domain!";
+            throw new Exception("Error: No results retrieved from $server server for $domain domain!");
         } else {
             while (strpos($result, "Whois Server:") !== false) {
                 preg_match("/Whois Server: (.*)/", $result, $matches);
@@ -146,7 +146,10 @@ class Whois
     {
         $port = 43;
         $timeout = 10;
-        $fp = @fsockopen($server, $port, $errno, $errstr, $timeout) or die("Socket Error " . $errno . " - " . $errstr);
+        $fp = @fsockopen($server, $port, $errno, $errstr, $timeout);
+        if ( !$fp ) {
+            throw new Exception("Socket Error " . $errno . " - " . $errstr);
+        }
         // if($server == "whois.verisign-grs.com") $domain = "=".$domain; // whois.verisign-grs.com requires the equals sign ("=") or it returns any result containing the searched string.
         fputs($fp, $domain . "\r\n");
         $out = "";

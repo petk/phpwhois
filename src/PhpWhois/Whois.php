@@ -66,7 +66,7 @@ class Whois
 
     /**
      * Looks up the current domain or IP.
-     * 
+     *
      * @return string Content of whois lookup.
      */
     public function lookup()
@@ -76,6 +76,7 @@ class Whois
         } else {
             $result = $this->lookupDomain($this->domain);
         }
+
         return $result;
     }
 
@@ -106,6 +107,7 @@ class Whois
                 }
             }
         }
+
         return "$domain domain lookup results from $server server:\n\n" . $result;
     }
 
@@ -118,19 +120,20 @@ class Whois
      */
     public function lookupIp($ip)
     {
-        $results = array();
+        $results = [];
 
         $continentServer = new Server();
         foreach ($continentServer->getContinentServers() as $server) {
             $result = $this->queryServer($server, $ip);
-                if ($result && !in_array($result, $results)) {
-                    $results[$server]= $result;
-                }
+            if ($result && !in_array($result, $results)) {
+                $results[$server] = $result;
+            }
         }
         $res = "RESULTS FOUND: " . count($results);
         foreach ($results as $server => $result) {
             $res .= "Lookup results for " . $ip . " from " . $server . " server: " . $result;
         }
+
         return $res;
     }
 
@@ -147,27 +150,27 @@ class Whois
         $port = 43;
         $timeout = 10;
         $fp = @fsockopen($server, $port, $errno, $errstr, $timeout);
-        if ( !$fp ) {
+        if (!$fp) {
             throw new Exception("Socket Error " . $errno . " - " . $errstr);
         }
         // if($server == "whois.verisign-grs.com") $domain = "=".$domain; // whois.verisign-grs.com requires the equals sign ("=") or it returns any result containing the searched string.
-        fputs($fp, $domain . "\r\n");
-        $out = "";
+        fwrite($fp, $domain . "\r\n");
+        $out = '';
         while (!feof($fp)) {
             $out .= fgets($fp);
         }
         fclose($fp);
 
-        $res = "";
-        if ((strpos(strtolower($out), "error") === false) && (strpos(strtolower($out), "not allocated") === false)) {
-            $rows = explode("\n", $out);
-            foreach ($rows as $row) {
+        $res = '';
+        if ((stripos($out, 'error') === false) && (stripos($out, 'not allocated') === false)) {
+            foreach (explode("\n", $out) as $row) {
                 $row = trim($row);
-                if (($row != '') && ($row{0} != '#') && ($row{0} != '%')) {
-                    $res .= $row."\n";
+                if (($row !== '') && ($row[0] !== '#') && ($row[0] !== '%')) {
+                    $res .= $row . "\n";
                 }
             }
         }
+
         return $res;
     }
 
@@ -178,7 +181,7 @@ class Whois
      */
     public function isAvailable()
     {
-        if ( checkdnsrr($this->domain . '.', 'ANY') ) {
+        if (checkdnsrr($this->domain . '.', 'ANY')) {
             return false;
         }
 

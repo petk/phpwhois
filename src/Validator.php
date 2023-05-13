@@ -1,12 +1,4 @@
 <?php
-/*
- * This file is part of the PhpWhois package.
- *
- * (c) Peter Kokot <peterkokot@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace PhpWhois;
 
@@ -20,7 +12,7 @@ class Validator
      *
      * @param string $domain Domain name
      */
-    public function validateDomain($domain)
+    public function validateDomain(string $domain): string|bool
     {
         if (!preg_match("/^([-a-z0-9]{2,100})\.([a-z\.]{2,8})$/i", $domain)) {
             return false;
@@ -35,7 +27,7 @@ class Validator
      *
      * @return boolean|string $ip IP or domain name
      */
-    public function validateIp($ip)
+    public function validateIp(string $ip)
     {
         $ipnums = explode(".", $ip);
         if (count($ipnums) != 4) {

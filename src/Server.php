@@ -1,19 +1,9 @@
 <?php
-/*
- * This file is part of the PhpWhois package.
- *
- * (c) Peter Kokot <peterkokot@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace PhpWhois;
 
 /**
  * Server class
- *
- * @author Peter Kokot <peterkokot@gmail.com>
  */
 class Server
 {
@@ -23,7 +13,7 @@ class Server
      *
      * @var array $servers Array of whois servers for domain lookup.
      */
-    private $servers = array(
+    private array $servers = [
         "ac" => "whois.nic.ac", // Ascension Island
         // ad - Andorra - no whois server assigned
         "ae" => "whois.nic.ae", // United Arab Emirates
@@ -284,18 +274,18 @@ class Server
         // ye - Yemen - no whois server assigned
         "yt" => "whois.nic.yt", // Mayotte
         "yu" => "whois.ripe.net",
-    );
-    
+    ];
+
     /**
      * @var array $continentServers Array of servers for IP lookup.
      */
-    private $continentServers = array(
+    private array $continentServers = [
         //"whois.afrinic.net", // Africa - returns timeout error :-(
         "whois.lacnic.net", // Latin America and Caribbean - returns data for ALL locations worldwide :-)
         "whois.apnic.net", // Asia/Pacific only
         "whois.arin.net", // North America only
         "whois.ripe.net", // Europe, Middle East and Central Asia only
-    );
+    ];
 
 
     /**
@@ -305,7 +295,7 @@ class Server
      *
      * @return string Server name for domain lookup.
      */
-    public function getServerByTld($tld)
+    public function getServerByTld(string $tld): string
     {
         return $this->servers[$tld];
     }
@@ -315,7 +305,7 @@ class Server
      *
      * @return array Continent servers for IP lookup.
      */
-    public function getContinentServers()
+    public function getContinentServers(): array
     {
         return $this->continentServers;
     }

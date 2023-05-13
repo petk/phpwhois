@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.2/phpunit.xsd"
+         cacheDirectory=".phpunit.cache"
+         backupStaticProperties="false"
+         backupGlobals="false"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         bootstrap="./vendor/autoload.php"
+         bootstrap="vendor/autoload.php"
 >
-    <testsuites>
-        <testsuite name="PhpWhois Test Suite">
-            <directory>./src/PhpWhois/Tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory suffix=".php">./src/PhpWhois</directory>
-            <exclude>
-                <directory>./src/PhpWhois/Tests</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+  <coverage/>
+  <testsuites>
+    <testsuite name="PhpWhois Test Suite">
+      <directory>src/Tests/</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
-

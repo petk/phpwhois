@@ -1,38 +1,26 @@
 <?php
 
-/*
- * This file is part of the PHPWhois package.
- *
- * (c) Peter Kokot <peterkokot@gmail.com>
- * 
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace PhpWhois;
-
-use Exception;
 
 /**
  * Whois
- * @author Peter Kokot <peterkokot@gmail.com>
  */
 class Whois
 {
     const VERSION = "1.0-dev";
 
-    public $domain;
+    public string $domain;
 
-    public $tld;
+    public string $tld;
 
-    public $ip = null;
+    public string $ip = '';
 
     /**
      * Constructor.
      *
      * @param string $domain Domain name
      */
-    public function __construct($domain)
+    public function __construct(string $domain)
     {
         $this->domain = $this->clean($domain);
         $validator = new Validator();
@@ -44,7 +32,7 @@ class Whois
             $domainParts = explode(".", $this->domain);
             $this->tld = strtolower(array_pop($domainParts));
         } else {
-            throw new Exception('Domain seems to be invalid.');
+            throw new \Exception('Domain seems to be invalid.');
         }
     }
 
@@ -52,10 +40,8 @@ class Whois
      * Cleans domain name of empty spaces, www, http and https.
      *
      * @param string $domain Domain name
-     *
-     * @return string
      */
-    public function clean($domain)
+    public function clean(string $domain): string
     {
         $domain = trim($domain);
         $domain = preg_replace('#^https?://#', '', $domain);
@@ -69,7 +55,7 @@ class Whois
      *
      * @return string Content of whois lookup.
      */
-    public function lookup()
+    public function lookup(): string
     {
         if ($this->ip) {
             $result = $this->lookupIp($this->ip);
@@ -87,16 +73,16 @@ class Whois
      *
      * @return string Domain lookup results.
      */
-    public function lookupDomain($domain)
+    public function lookupDomain(string $domain): string
     {
         $serverObj = new Server();
         $server = $serverObj->getServerByTld($this->tld);
         if (!$server) {
-            throw new Exception("Error: No appropriate Whois server found for $domain domain!");
+            throw new \Exception("Error: No appropriate Whois server found for $domain domain!");
         }
         $result = $this->queryServer($server, $domain);
         if (!$result) {
-            throw new Exception("Error: No results retrieved from $server server for $domain domain!");
+            throw new \Exception("Error: No results retrieved from $server server for $domain domain!");
         } else {
             while (strpos($result, "Whois Server:") !== false) {
                 preg_match("/Whois Server: (.*)/", $result, $matches);
@@ -118,7 +104,7 @@ class Whois
      *
      * @return string IP lookup results.
      */
-    public function lookupIp($ip)
+    public function lookupIp(string $ip): string
     {
         $results = [];
 
@@ -145,13 +131,13 @@ class Whois
      *
      * @return string Information returned from whois server.
      */
-    public function queryServer($server, $domain)
+    public function queryServer(string $server, string $domain): string
     {
         $port = 43;
         $timeout = 10;
         $fp = @fsockopen($server, $port, $errno, $errstr, $timeout);
         if (!$fp) {
-            throw new Exception("Socket Error " . $errno . " - " . $errstr);
+            throw new \Exception("Socket Error " . $errno . " - " . $errstr);
         }
         // if($server == "whois.verisign-grs.com") $domain = "=".$domain; // whois.verisign-grs.com requires the equals sign ("=") or it returns any result containing the searched string.
         fwrite($fp, $domain . "\r\n");
@@ -176,10 +162,8 @@ class Whois
 
     /**
      * Checks if domain is available or not.
-     *
-     * @return boolean
      */
-    public function isAvailable()
+    public function isAvailable(): bool
     {
         if (checkdnsrr($this->domain . '.', 'ANY')) {
             return false;

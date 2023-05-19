@@ -1,13 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhpWhois;
+
+use PhpWhois\Validator\DomainValidator;
+use PhpWhois\Validator\IpValidator;
 
 /**
  * Whois
  */
 class Whois
 {
-    const VERSION = "1.0-dev";
+    public const VERSION = '1.0-dev';
 
     public string $domain;
 
@@ -23,13 +28,15 @@ class Whois
     public function __construct(string $domain)
     {
         $this->domain = $this->clean($domain);
-        $validator = new Validator();
+
+        $ipValidator = new IpValidator();
+        $domainValidator = new DomainValidator();
 
         // check if domain is ip
-        if ($validator->validateIp($this->domain)) {
+        if ($ipValidator->validate($this->domain)) {
             $this->ip = $this->domain;
-        } elseif ($validator->validateDomain($this->domain)) {
-            $domainParts = explode(".", $this->domain);
+        } elseif ($domainValidator->validate($this->domain)) {
+            $domainParts = explode('.', $this->domain);
             $this->tld = strtolower(array_pop($domainParts));
         } else {
             throw new \Exception('Domain seems to be invalid.');
@@ -45,7 +52,9 @@ class Whois
     {
         $domain = trim($domain);
         $domain = preg_replace('#^https?://#', '', $domain);
-        if (substr(strtolower($domain), 0, 4) == "www.") $domain = substr($domain, 4);
+        if (substr(strtolower($domain), 0, 4) === 'www.') {
+            $domain = substr($domain, 4);
+        }
 
         return $domain;
     }

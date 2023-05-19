@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhpWhois;
 
 /**
@@ -286,7 +288,6 @@ class Server
         "whois.arin.net", // North America only
         "whois.ripe.net", // Europe, Middle East and Central Asia only
     ];
-
 
     /**
      * Gets a server name for domain lookup by domain tld.

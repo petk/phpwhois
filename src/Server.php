@@ -97,6 +97,7 @@ class Server
         "ci" => "whois.nic.ci", // Cote d'Ivoire
         "ck" => "whois.nic.ck", // Cook Islands
         "cl" => "whois.nic.cl", // Chile
+        "club" => "whois.nic.club",
         // cm - Cameroon - no whois server assigned
         "cn" => "whois.cnnic.net.cn", // China
         "co" => "whois.nic.co", // Colombia
